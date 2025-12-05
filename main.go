@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/joho/godotenv"
 	tele "gopkg.in/telebot.v4"
 	"log"
 	"math/rand"
@@ -45,8 +46,12 @@ var (
 )
 
 func main() {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal(err)
+	}
 	pref := tele.Settings{
-		Token:  os.Getenv("TOK"),
+		Token:  os.Getenv("TOKKEN"),
 		Poller: &tele.LongPoller{Timeout: 10 * time.Second},
 	}
 
